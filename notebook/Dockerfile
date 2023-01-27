@@ -38,7 +38,7 @@ RUN mamba install --yes python=${PYTHON_VERSION} nomkl \
     cachey \
     streamz \
     dask-labextension>=5 \
-    && mamba clean -tipsy \
+    && mamba clean -all -f -y \
     && jupyter lab clean \
     && jlpm cache clean \
     && npm cache clean --force \
