@@ -25,7 +25,7 @@ RUN MAGICARCH=$(dpkg --print-architecture) && \
 
 USER $NB_USER
 
-RUN conda install mamba==0.20.0 -n base -c conda-forge --yes
+RUN conda install mamba -n base -c conda-forge --yes
 RUN mamba install --yes python=${PYTHON_VERSION} nomkl \
     && mamba install --yes \
     python-blosc \
@@ -37,9 +37,10 @@ RUN mamba install --yes python=${PYTHON_VERSION} nomkl \
     ipywidgets \
     cachey \
     streamz \
-    dask-labextension==5.2.0 \
-    jupyterhub-singleuser==2.1.1 \
-    && mamba clean -tipsy \
+    dask-labextension \
+    jupyterhub-singleuser \
+    nodejs \
+    && mamba clean -all -f -y \
     && jupyter lab clean \
     && jlpm cache clean \
     && npm cache clean --force \
