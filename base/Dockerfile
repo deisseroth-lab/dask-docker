@@ -11,7 +11,7 @@ ENV PYTHON_VERSION=${python}
 ENV DASK_VERSION=${release}
 
 RUN conda install --yes nomkl cytoolz cmake \
-    && conda install --yes mamba \
+    && conda install --yes mamba==0.20.0 \
     && mamba install --yes -c conda-forge \
     python=${PYTHON_VERSION} \
     python-blosc \
@@ -23,7 +23,7 @@ RUN conda install --yes nomkl cytoolz cmake \
     tini==0.18.0 \
     cachey \
     streamz \
-    && mamba clean -all -f -y \
+    && mamba clean -tipsy \
     && find /opt/conda/ -type f,l -name '*.a' -delete \
     && find /opt/conda/ -type f,l -name '*.pyc' -delete \
     && find /opt/conda/ -type f,l -name '*.js.map' -delete \
