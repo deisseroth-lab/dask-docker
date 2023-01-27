@@ -39,8 +39,8 @@ RUN mamba install --yes python=${PYTHON_VERSION} nomkl \
     streamz \
     dask-labextension \
     jupyterhub-singleuser \
-    nodejs \
-    && mamba clean -all -f -y \
+    && mamba install --yes nodejs \
+    && mamba clean -tipy \
     && jupyter lab clean \
     && jlpm cache clean \
     && npm cache clean --force \
