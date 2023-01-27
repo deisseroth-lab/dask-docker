@@ -27,7 +27,6 @@ USER $NB_USER
 
 RUN conda install mamba -n base -c conda-forge --yes
 RUN mamba install --yes python=${PYTHON_VERSION} nomkl \
-    && mamba install --yes \
     python-blosc \
     cytoolz \
     dask==${DASK_VERSION} \
@@ -39,7 +38,7 @@ RUN mamba install --yes python=${PYTHON_VERSION} nomkl \
     streamz \
     dask-labextension \
     jupyterhub-singleuser \
-    && mamba install --yes nodejs \
+    nodejs \
     && mamba clean -tipy \
     && jupyter lab clean \
     && jlpm cache clean \
